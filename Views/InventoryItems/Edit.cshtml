@@ -1,0 +1,107 @@
+@model ComputerStoreInventory.Models.InventoryItem
+
+@{
+    ViewData["Title"] = "Edit Inventory Item";
+}
+
+<h1>Edit Inventory Item</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label asp-for="DateAcquired" class="form-label"></label>
+                <input asp-for="DateAcquired" class="form-control" type="date" />
+                <span asp-validation-for="DateAcquired" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="EquipmentType" class="form-label"></label>
+                <select asp-for="EquipmentType" class="form-select"
+                        asp-items="Html.GetEnumSelectList<ComputerStoreInventory.Models.EquipmentType>()">
+                </select>
+                <span asp-validation-for="EquipmentType" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Status" class="form-label"></label>
+                <select asp-for="Status" class="form-select"
+                        asp-items="Html.GetEnumSelectList<ComputerStoreInventory.Models.InventoryStatus>()">
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ManufacturingYear" class="form-label"></label>
+                <input asp-for="ManufacturingYear" class="form-control" />
+                <span asp-validation-for="ManufacturingYear" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Condition" class="form-label"></label>
+                <input asp-for="Condition" class="form-control" />
+                <span asp-validation-for="Condition" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Manufacturer" class="form-label"></label>
+                <input asp-for="Manufacturer" class="form-control" />
+                <span asp-validation-for="Manufacturer" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Model" class="form-label"></label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ScreenSize" class="form-label"></label>
+                <input asp-for="ScreenSize" class="form-control" placeholder="e.g. 15.6" />
+                <span asp-validation-for="ScreenSize" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="StorageSizeGB" class="form-label"></label>
+                <input asp-for="StorageSizeGB" class="form-control" />
+                <span asp-validation-for="StorageSizeGB" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="MemoryGB" class="form-label"></label>
+                <input asp-for="MemoryGB" class="form-control" />
+                <span asp-validation-for="MemoryGB" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Grade" class="form-label"></label>
+                <select asp-for="Grade" class="form-select"
+                        asp-items="Html.GetEnumSelectList<ComputerStoreInventory.Models.ItemGrade>()">
+                </select>
+                <span asp-validation-for="Grade" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Price" class="form-label"></label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input asp-for="Price" class="form-control" />
+                </div>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
